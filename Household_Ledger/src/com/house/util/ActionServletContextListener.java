@@ -40,9 +40,9 @@ public class ActionServletContextListener implements ServletContextListener {
     		String value = rb.getString(key);
 //    		System.out.println(key + "=" + value);
     		try {
-				Action di = (Action)Class.forName(value).newInstance();
-				map.put(key, di);
-				System.out.println(key + "=" + value + "-->" + di);
+				Action ac = (Action)Class.forName(value).newInstance();
+				map.put(key, ac);
+				System.out.println(key + "=" + value + "-->" + ac);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

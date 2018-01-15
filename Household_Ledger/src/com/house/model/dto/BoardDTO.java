@@ -1,7 +1,7 @@
 package com.house.model.dto;
 
 public class BoardDTO {
-	private String idx;
+	private int idx;
 	private String userId;
 	private String title;
 	private String content;
@@ -13,7 +13,7 @@ public class BoardDTO {
 	
 	public BoardDTO() { }
 	
-	public BoardDTO(String idx, String userId, String title, String content, int viewCount, String fileName,
+	public BoardDTO(int idx, String userId, String title, String content, int viewCount, String fileName,
 			String writeTime) {
 		super();
 		this.idx = idx;
@@ -24,7 +24,7 @@ public class BoardDTO {
 		this.fileName = fileName;
 		this.writeTime = writeTime;
 	}
-	public BoardDTO(String idx, String userId, String title, String content, int viewCount, String fileName) {
+	public BoardDTO(int idx, String userId, String title, String content, int viewCount, String fileName) {
 		super();
 		this.idx = idx;
 		this.userId = userId;
@@ -33,10 +33,10 @@ public class BoardDTO {
 		this.viewCount = viewCount;
 		this.fileName = fileName;
 	}
-	public String getIdx() {
+	public int getIdx() {
 		return idx;
 	}
-	public void setIdx(String idx) {
+	public void setIdx(int idx) {
 		this.idx = idx;
 	}
 	public String getUserId() {
