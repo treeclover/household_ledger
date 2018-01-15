@@ -10,7 +10,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import com.house.controller.Doing;
+import com.house.controller.Action;
 
 /**
  * Application Lifecycle Listener implementation class ActionServletContextListener
@@ -26,7 +26,7 @@ public class ActionServletContextListener implements ServletContextListener {
     	ServletContext application = sce.getServletContext();
     	String fileName = application.getInitParameter("fileName");
     	
-    	Map<String, Doing> map = new HashMap<>();
+    	Map<String, Action> map = new HashMap<>();
     	
     	//2. 해당 파일이름으로 로딩
     	ResourceBundle rb = ResourceBundle.getBundle(fileName);
@@ -40,7 +40,7 @@ public class ActionServletContextListener implements ServletContextListener {
     		String value = rb.getString(key);
 //    		System.out.println(key + "=" + value);
     		try {
-				Doing di = (Doing)Class.forName(value).newInstance();
+				Action di = (Action)Class.forName(value).newInstance();
 				map.put(key, di);
 				System.out.println(key + "=" + value + "-->" + di);
 			} catch (Exception e) {
