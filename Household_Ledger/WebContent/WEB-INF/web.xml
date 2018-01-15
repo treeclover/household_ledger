@@ -12,6 +12,6 @@
   
   <context-param>
     <param-name>fileName</param-name>
-    <param-value>com.house.util.doing</param-value>
+    <param-value>com.house.util.action</param-value>
   </context-param>
 </web-app>
