@@ -70,6 +70,16 @@ public class HouseholdService {
 		
 		return list;		
 	}
+
+	public static List<HouseholdDTO> selectThree(String userId) throws SQLException {
+		List<HouseholdDTO> list = dao.selectThree(userId);
+		
+		if(list == null) {
+			throw new SQLException("값을 찾지 못하였습니다.");
+		}
+		
+		return list;
+	}
 	
 	
 	

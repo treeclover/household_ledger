@@ -20,43 +20,107 @@
 	<jsp:include page="/nav/header.jsp"></jsp:include>
 </head>
 <body>
-	<div class="container">	
+	<div class="container-fluid">
 		<!-- Main component for a primary marketing message or call to action -->
-		<div class="jumbotron">
-			<c:choose>
-				<c:when test="${empty requestScope.list}">
-					<tr>
-						<td colspan="5">
-							<p align="center">
-								<b><span style="font-size: 9pt;">등록된 상품이 없습니다.</span></b>
-							</p>
-						</td>
-					</tr>
-				</c:when>
-				<c:otherwise>
-					<c:forEach items="${requestScope.list}" var="house">
+		<div class="well">
+			<div class="row">
+				<c:choose>
+					<c:when test="${empty requestScope.list}">
 						<tr>
-							<td bgcolor="">
+							<td colspan="5">
 								<p align="center">
-									<span style="font-size: 9pt;"> ${house.rec}</span>
-								</p>
-							</td>
-							<td bgcolor="">
-								<p>
-									<span style="font-size: 9pt;"> ${house.ownType}</span>
-									</span>
+									<b><span style="font-size: 9pt;">등록된 상품이 없습니다.</span></b>
 								</p>
 							</td>
 						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
+					</c:when>
+					<c:otherwise>
+						<div class="col-md-6">
+							<h2>지출</h2>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>소지 유형</th>
+										<th>가격</th>
+										<th>지출/수입</th>
+										<th>잔액</th>
+										<th>사용처</th>
+										<th>사용 시간</th>
+									</tr>
+								</thead>
+								<c:forEach items="${requestScope.list}" var="house">
+									<c:choose>
+										<c:when test="${'output' eq house.rec}">
+											<tbody>
+												<tr>
+													<c:choose>
+														<c:when test="${null eq house.ownType}">
+															<td>현금</td>
+														</c:when>
+														<c:otherwise>
+															<td>${house.ownType}</td>
+														</c:otherwise>
+													</c:choose>
+													<td>지출</td>
+													<td>${house.price}</td>
+													<td>${house.ownMoney}</td>
+													<td>${house.use}</td>
+													<td>${house.useTime}</td>
+												</tr>
+											</tbody>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+							</table>
+						</div>
+						<div class="col-md-6">
+							<h2>수입</h2>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>소지 유형</th>
+										<th>가격</th>
+										<th>지출/수입</th>
+										<th>잔액</th>
+										<th>사용처</th>
+										<th>사용 시간</th>
+									</tr>
+								</thead>
+								<c:forEach items="${requestScope.list}" var="house">
+									<c:choose>
+										<c:when test="${'input' eq house.rec}">
+											<tbody>
+												<tr>
+													<c:choose>
+														<c:when test="${null eq house.ownType}">
+															<td>현금</td>
+														</c:when>
+														<c:otherwise>
+															<td>${house.ownType}</td>
+														</c:otherwise>
+													</c:choose>
+													<td>수입</td>
+													<td>${house.price}</td>
+													<td>${house.ownMoney}</td>
+													<td>${house.use}</td>
+													<td>${house.useTime}</td>
+												</tr>
+											</tbody>
+										</c:when>
+									</c:choose>
+								</c:forEach>
+							</table>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
 		</div>
 	</div>
 
 	<!-- Bootstrap core JavaScript================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${path}/js/bootstrap.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

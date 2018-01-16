@@ -49,7 +49,7 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Home</a></li>
-					<li><a href="${path}/house?command=select">가계부</a></li>
+					<li><a href="${path}/house?command=selectDetail">가계부</a></li>
 					<li><a href="#contact">게시판</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">Dropdown

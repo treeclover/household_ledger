@@ -18,5 +18,7 @@ public interface HouseholdDAO {
 	public List<HouseholdDTO> selectHouseKindAndRecord(String userId, String ownKind, String record) throws SQLException;
 
 	public List<HouseholdDTO> selectAll(String userId) throws SQLException;
+
+	public List<HouseholdDTO> selectThree(String userId) throws SQLException;
 	
 }
