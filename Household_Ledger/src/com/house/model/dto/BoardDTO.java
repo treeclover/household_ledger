@@ -13,6 +13,22 @@ public class BoardDTO {
 	
 	public BoardDTO() { }
 	
+	public BoardDTO(String userId, String title, String content, String fileName) {
+		super();
+		this.userId = userId;
+		this.title = title;
+		this.content = content;
+		this.fileName = fileName;
+	}
+
+	public BoardDTO(String userId, String title, String content) {
+		super();
+		this.userId = userId;
+		this.title = title;
+		this.content = content;
+		
+	}
+
 	public BoardDTO(int idx, String userId, String title, String content, int viewCount, String fileName,
 			String writeTime) {
 		super();

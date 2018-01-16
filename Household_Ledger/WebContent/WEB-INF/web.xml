@@ -4,7 +4,6 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  
   <context-param>
     <param-name>fileName</param-name>
     <param-value>com.house.util.action</param-value>

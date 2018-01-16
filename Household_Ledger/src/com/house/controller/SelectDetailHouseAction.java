@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.house.controller.Action;
 import com.house.model.dto.HouseholdDTO;
+import com.house.model.dto.RMoneyDTO;
 import com.house.model.service.HouseholdService;
+import com.house.model.service.RMoneyService;
 
 public class SelectDetailHouseAction implements Action {
 
@@ -28,6 +30,7 @@ public class SelectDetailHouseAction implements Action {
 		
 		try {
 			List<HouseholdDTO> list = new ArrayList<>();
+			List<RMoneyDTO> listMoney = new ArrayList<>();
 			
 			if(ownType.equals("") && record.equals("") && ownKind.equals("")) {
 				list = HouseholdService.selectAll(userId);
@@ -44,7 +47,10 @@ public class SelectDetailHouseAction implements Action {
 					list = HouseholdService.selectHouseKindAndRecord(userId, ownType, record);
 				}
 			}
+			listMoney = RMoneyService.selectAll(userId);
+			
 			request.setAttribute("list", list);
+			request.setAttribute("listMoney", listMoney);
 			request.getRequestDispatcher("/house/house.jsp").forward(request, response);
 			return;
 		} catch (Exception e) {

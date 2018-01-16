@@ -1,5 +1,5 @@
 package com.house.model.dto;
-
+// DB에 입력할 값들 get set만 !
 public class UserDTO {
 	private String userId;
 	private String userPwd;
@@ -10,6 +10,12 @@ public class UserDTO {
 		
 	public UserDTO() { }
 
+	public UserDTO(String userId, String userPwd) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+	}
+	
 	public UserDTO(String userId, String userPwd, String name, String birthDate, String emailAddr) {
 		super();
 		this.userId = userId;

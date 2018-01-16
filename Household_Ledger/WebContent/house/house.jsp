@@ -19,6 +19,15 @@
 	<c:set var="path" value="${pageContext.request.contextPath}" scope="application" />
 	<jsp:include page="/nav/header.jsp"></jsp:include>
 </head>
+<script type="text/javascript">
+	function moveOutput() {
+		location.href="house?command=selectInput&record=output";
+	}
+	
+	function moveInput() {
+		location.href="house?command=selectInput&record=input";
+	}
+</script>
 <body>
 	<div class="container-fluid">
 		<!-- Main component for a primary marketing message or call to action -->
@@ -35,7 +44,7 @@
 						</tr>
 					</c:when>
 					<c:otherwise>
-						<div class="col-md-6">
+						<div class="col-md-6" onclick="moveOutput()">
 							<h2>지출</h2>
 							<table class="table">
 								<thead>
@@ -73,14 +82,13 @@
 								</c:forEach>
 							</table>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-6" onClick="moveInput()">
 							<h2>수입</h2>
 							<table class="table">
 								<thead>
 									<tr>
 										<th>소지 유형</th>
 										<th>가격</th>
-										<th>지출/수입</th>
 										<th>잔액</th>
 										<th>사용처</th>
 										<th>사용 시간</th>
@@ -99,7 +107,6 @@
 															<td>${house.ownType}</td>
 														</c:otherwise>
 													</c:choose>
-													<td>수입</td>
 													<td>${house.price}</td>
 													<td>${house.ownMoney}</td>
 													<td>${house.use}</td>
@@ -111,7 +118,35 @@
 								</c:forEach>
 							</table>
 						</div>
-					</c:otherwise>
+						<div class="col-xs-9">
+							<h2>잔액</h2>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>구분</th>
+										<th>이름</th>
+										<th>금액</th>
+									</tr>
+								</thead>
+								<c:forEach items="${requestScope.listMoney}" var="money">
+									<tbody>
+										<tr>
+											<td>${money.ownKind}</td>
+											<c:choose>
+												<c:when test="${null ne money.ownType}">
+													<td>${money.ownType}</td>
+												</c:when>
+												<c:otherwise>
+													<td> </td>
+												</c:otherwise>
+											</c:choose>
+											<td>${money.ownMoney}</td>
+										</tr>
+									</tbody>
+								</c:forEach>
+							</table>						
+						</div>
+					</c:otherwise>			
 				</c:choose>
 			</div>
 		</div>

@@ -219,4 +219,60 @@ public class HouseholdDAOImpl implements HouseholdDAO {
 		return list;
 	}
 
+	@Override
+	public List<HouseholdDTO> selectThree(String userId) throws SQLException {
+		Connection conn = null;
+		Connection conn1 = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt1 = null;
+		ResultSet rs = null;
+		ResultSet rs1 = null;
+		List<HouseholdDTO> list = null;
+		
+		try {
+			conn = DbUtil.getConnection();
+			pstmt = conn.prepareStatement(rb.getString("query.selectRec3"));
+			pstmt.setString(1, userId);
+			pstmt.setString(2, "input");
+			
+			rs = pstmt.executeQuery();
+			
+			list = new ArrayList<>();
+			
+			while(rs.next()) {
+				String user_id = rs.getString(1);
+				String own_type = rs.getString(2);
+				String rec = rs.getString(3);
+				int price = rs.getInt(4);
+				int ownMoney = rs.getInt(5);
+				String use = rs.getString(6);
+				String useTime = rs.getString(7);
+				list.add(new HouseholdDTO(user_id, own_type, rec, price, ownMoney, use, useTime));
+			}
+			
+			conn1 = DbUtil.getConnection();
+			pstmt1 = conn1.prepareStatement(rb.getString("query.selectRec3"));
+			pstmt1.setString(1, userId);
+			pstmt1.setString(2, "output");
+			
+			rs1 = pstmt1.executeQuery();
+
+			while(rs1.next()) {
+				String user_id = rs1.getString(1);
+				String own_type = rs1.getString(2);
+				String rec = rs1.getString(3);
+				int price = rs1.getInt(4);
+				int ownMoney = rs1.getInt(5);
+				String use = rs1.getString(6);
+				String useTime = rs1.getString(7);
+				list.add(new HouseholdDTO(user_id, own_type, rec, price, ownMoney, use, useTime));
+			}
+		} finally {
+			DbUtil.dbClose(conn, pstmt, rs);
+			DbUtil.dbClose(conn1, pstmt1, rs1);
+		}
+		
+		return list;
+	}
+
 }

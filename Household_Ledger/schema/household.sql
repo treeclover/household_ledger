@@ -17,5 +17,13 @@ insert into Household values('aaaa', null, 'input', 50000, 200000, '5만원권 �
 insert into Household values('aaaa', '신한', 'input', 20000, 120000, '예비군 수당', '2018-01-08 16:43');
 insert into Household values('aaaa', null, 'input', 50000, 250000, '5만원권 주웠음', '2018-01-05 13:20');
 insert into Household values('aaaa', '국민', 'input', 30000, 530000, '중고품 팔았음', '2018-01-02 12:48');
+insert into Household values('aaaa', null, 'input', 10000, 260000, '1만원권 주웠음', '2017-11-28 11:59');
+insert into Household values('aaaa', '신한', 'input', 50000, 170000, '친구와 내기에서 이김', '2018-01-19 15:20');
+insert into Household values('aaaa', '국민', 'input', 1000000, 1530000, '알바비 들어옴', '2018-01-21 14:41');
 
 select * from Household;
+
+select * from Household order by use_time desc;
+
+select * from Household where user_id='aaaa' and rec='input' and rownum<=5 order by use_time desc;
+select * from Household where user_id='aaaa' and rec='input' and rownum<=5 order by use_time desc;

@@ -44,33 +44,24 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">웹 가계부 홈페이지</a>
+				<a class="navbar-brand" href="house?command=select">웹 가계부 홈페이지</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Home</a></li>
 					<li><a href="${path}/house?command=selectDetail">가계부</a></li>
-					<li><a href="#contact">게시판</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
-							<span class="caret"></span>
-					</a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li class="dropdown-header">Nav header</li>
-							<li><a href="#">Separated link</a></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul></li>
+					<li><a href="${pageContext.request.contextPath}/select">게시판</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="../navbar-static-top/">Login</a></li>
-					<!-- 
-					<li class="active"><a href="./">Fixed top <span
-							class="sr-only">(current)</span></a></li>
-					-->
+					<c:choose>						 
+						<c:when test="${null == loginUser or '' == loginUser or 'null' == loginUser}" >
+								<li><a href="login.jsp">Login</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="active"><a href="login.jsp">${loginUser}!</a></li>
+								<li><a href="${pageContext.request.contextPath}/logout" class="btn btn-danger">Logout</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

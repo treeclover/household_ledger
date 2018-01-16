@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
+	<c:set var="path" value="${pageContext.request.contextPath}" scope="application"/>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge;">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,49 +39,16 @@
 		<div class="jumbotron">
 			<!-- 여기부터 작성할 jsp코드 작성하기. -->
 			<div class="row">
-				<div class="col-md-6">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Username</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<h1>Navbar example</h1>
-				<p>This example is a quick exercise to illustrate how the
-					default, static and fixed to top navbar work. It includes the
-					responsive CSS and HTML, so it also adapts to your viewport and
-					device.</p>
-				<p>To see the difference between static and fixed top navbars,
-					just scroll.</p>
+				<h1>가계부 홈페이지</h1>
+			<h4> 반갑습니다 <cite title="Source Title">어서오세요!</cite></h4>
+			<h4> 1. 주요기능 <br>
+				2) 자료실 형태의 게시판관리 (등록, 수정, 삭제, 검색, 다운로드)
+				<P>2. 주요 기술 및 환경
 				<p>
-					<a class="btn btn-lg btn-primary" href="../../components/#navbar"
-						role="button">View navbar docs</a>
-				</p>
+					&nbsp;&nbsp; 어서오세요 <br> &nbsp;&nbsp;&nbsp;&nbsp; : 가계부 홈페이지
+					입니다.<br>
+			</h4>
+			<img alt="가계부 샘플 이미지" src="${path}/save/household.png">
 			</div>
 			<!-- 여기까지 작성할 jsp코드 작성하기. -->
 		</div>

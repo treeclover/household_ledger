@@ -9,26 +9,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.house.model.dto.HouseholdDTO;
-import com.house.model.dto.RMoneyDTO;
 import com.house.model.service.HouseholdService;
-import com.house.model.service.RMoneyService;
 
-public class SelectHouseAction implements Action {
-	
+public class SelectInputHouseAction implements Action {
+
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
+		String rec = request.getParameter("record");
 		userId = "aaaa";
+		
 		try {
 			List<HouseholdDTO> list = new ArrayList<>();
-			List<RMoneyDTO> listMoney = new ArrayList<>();
 			
-			list = HouseholdService.selectThree(userId);
-			listMoney = RMoneyService.selectAll(userId);
+			list = HouseholdService.selectHouseRecord(userId, rec);
 			
+			request.setAttribute("record", rec);
 			request.setAttribute("list", list);
-			request.setAttribute("listMoney", listMoney);
-			request.getRequestDispatcher("/house/house.jsp").forward(request, response);
+			request.getRequestDispatcher("/house/record.jsp").forward(request, response);
 			return;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -36,6 +34,7 @@ public class SelectHouseAction implements Action {
 		}
 		
 		request.getRequestDispatcher("/error/error.jsp").forward(request, response);
+		
 	}
-
+	
 }
